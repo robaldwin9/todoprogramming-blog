@@ -5,9 +5,9 @@ draft = false
 +++
 # Past experiecne with Goaddy
 Buying a domain name is fairly straightforward with [godaddy](https://www.godaddy.com/), but after some time I experienced several frustrations.
-    * The api accesse to setup ddns(Dynamic Domain Name System) is behind a paywall requiring you to have many domains with them.
-    * After initial login any change to a DNS (Domain Name System) record requires authentication.
-    * SSL cert. purchase is expensive, despite competition having much cheaper alternatives.
+* The api accesse to setup ddns(Dynamic Domain Name System) is behind a paywall requiring you to have many domains with them.
+* After initial login any change to a DNS (Domain Name System) record requires authentication.
+* SSL cert. purchase is expensive, despite competition having much cheaper alternatives.
 
 ## Making the cloudflare switch
 My experience with [cloudflare](https://www.cloudflare.com/) has been much better they offer their [API](https://developers.cloudflare.com/api/) for free. 
