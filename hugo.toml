@@ -1,5 +1,5 @@
 title = "Todo Programming Blog"
-baseURL = 'http://blog.todo-programming.org'
+baseURL = 'https://blog.todo-programming.org'
 contentDir = "content"
 # This is what goes in <html lang="">
 languageCode = 'en-us'
@@ -60,7 +60,7 @@ theme = "hugo-blog-awesome"
     # When pageRef is set, setting `url` is optional; it will be used as a fallback if the page is not found.
     pageRef="/"
     name = 'Home'
-    url = 'http://blog.todo-programming.org'
+    url = 'http://todoprogramming.org'
     weight = 10
   [[Languages.en-gb.menu.main]]
     pageRef="posts"
