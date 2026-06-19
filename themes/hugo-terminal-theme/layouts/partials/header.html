@@ -1,0 +1,16 @@
+<header id="site-header">
+  {{- $desktopBanner := .Site.Params.bannerDesktop | default (upper .Site.Title) -}}
+  {{- $mobileBanner := .Site.Params.bannerMobile | default $desktopBanner -}}
+
+  {{- $bannerLink := .Site.Params.bannerLink | default .Site.BaseURL -}}
+  <a id="banner-wrap" href="{{ $bannerLink }}" aria-label="{{ .Site.Title }} — home">
+    <pre id="site-banner-desktop">{{ trim $desktopBanner "\n" }}</pre>
+    <pre id="site-banner-mobile">{{ trim $mobileBanner "\n" }}</pre>
+  </a>
+
+  <nav id="site-nav" aria-label="Main navigation">
+    {{ range .Site.Menus.main }}
+    <a href="{{ .URL }}"{{ if $.IsMenuCurrent "main" . }} aria-current="page"{{ end }}>[{{ .Name | upper }}]</a>
+    {{ end }}
+  </nav>
+</header>

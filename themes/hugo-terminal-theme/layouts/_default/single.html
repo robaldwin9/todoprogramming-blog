@@ -1,0 +1,58 @@
+{{ define "main" }}
+<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+
+  <div class="cmd-line">
+    <span class="prompt-text">$ cat {{ with .File }}{{ .BaseFileName }}{{ else }}{{ .Slug }}{{ end }}.md</span>
+  </div>
+
+  <header class="post-header">
+    <div class="post-meta">
+      <span class="meta-label">title:</span>
+      <span class="post-title-display" itemprop="name headline">{{ .Title }}</span>
+      <br>
+      <span class="meta-label">date: &nbsp;</span>
+      <time class="dim" datetime="{{ .Date.Format "2006-01-02" }}" itemprop="datePublished">
+        {{- .Date.Format "2006-01-02" -}}
+      </time>
+      {{ with .Params.tags }}
+      <br>
+      <span class="meta-label">tags: &nbsp;</span>
+      {{ range . }}
+      <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="tag">[{{ . }}]</a>
+      {{ end }}
+      {{ end }}
+      {{ with .Params.categories }}
+      <br>
+      <span class="meta-label">cat: &nbsp;&nbsp;</span>
+      {{ range . }}
+      <a href="{{ "categories" | relURL }}/{{ . | urlize }}/" class="category">[{{ . }}]</a>
+      {{ end }}
+      {{ end }}
+      {{ with .ReadingTime }}
+      <br>
+      <span class="meta-label">read: &nbsp;</span>
+      <span class="dim">~{{ . }} min</span>
+      {{ end }}
+    </div>
+    <div class="separator">---</div>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    {{ .Content }}
+  </div>
+
+  <footer class="post-footer">
+    <div class="separator">---</div>
+    <div class="post-nav">
+      {{ with .PrevInSection }}
+      <a href="{{ .Permalink }}" class="nav-prev">&laquo; {{ .Title }}</a>
+      {{ end }}
+      <a href="{{ .Site.BaseURL }}" class="back-link">$ cd ..</a>
+      {{ with .NextInSection }}
+      <a href="{{ .Permalink }}" class="nav-next">{{ .Title }} &raquo;</a>
+      {{ end }}
+    </div>
+  </footer>
+
+</article>
+{{ end }}

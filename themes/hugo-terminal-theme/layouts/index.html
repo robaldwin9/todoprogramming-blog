@@ -1,0 +1,46 @@
+{{ define "main" }}
+<section class="home">
+
+  {{/* ASCII banner — set params.banner in your hugo.toml */}}
+  {{ with .Site.Params.banner }}
+  <pre class="banner" aria-label="Site banner">{{ . }}</pre>
+  {{ end }}
+
+  {{/* Welcome / description block */}}
+  {{ with .Site.Params.welcomeMessage }}
+  <div class="cmd-line">
+    <span class="prompt-text">$ cat welcome.txt</span>
+  </div>
+  <p class="welcome-msg">{{ . }}</p>
+  {{ end }}
+
+  {{/* Recent posts as a directory listing */}}
+  <div class="cmd-line">
+    <span class="prompt-text">$ ls -lt posts/</span>
+  </div>
+
+  {{ $posts := where .Site.RegularPages "Section" "posts" }}
+  {{ $limit := .Site.Params.homePosts | default 10 }}
+  {{ if $posts }}
+  <ul class="post-list" aria-label="Recent posts">
+    {{ range first $limit $posts }}
+    <li class="post-entry">
+      <span class="post-date dim">{{ .Date.Format "2006-01-02" }}</span>
+      <a href="{{ .Permalink }}" class="post-link">
+        {{- with .File }}{{ .BaseFileName }}{{ else }}{{ .Slug }}{{ end }}.md
+      </a>
+      <span class="post-title-hint dim">// {{ .Title }}</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ if gt (len $posts) $limit }}
+  <div class="more-link">
+    <a href="{{ "posts" | relURL }}">$ ls posts/ | wc -l &rarr; {{ len $posts }} total &mdash; view all</a>
+  </div>
+  {{ end }}
+  {{ else }}
+  <p class="dim">// no posts yet. create content/posts/hello-world.md to get started.</p>
+  {{ end }}
+
+</section>
+{{ end }}

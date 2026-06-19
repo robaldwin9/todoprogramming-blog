@@ -1,0 +1,45 @@
+{{ define "main" }}
+<section class="list-page">
+
+  <div class="cmd-line">
+    <span class="prompt-text">$ ls -la {{ .Title | lower | urlize }}/</span>
+  </div>
+
+  <div class="dir-header dim">
+    total {{ len .Pages }}<br>
+    drwxr-xr-x &nbsp;{{ .Title }}/
+  </div>
+
+  {{ if .Pages }}
+  <ul class="post-list" aria-label="{{ .Title }} entries">
+    {{ range .Pages }}
+    <li class="post-entry">
+      <span class="file-perms dim">-rw-r--r--</span>
+      <span class="post-date dim">{{ .Date.Format "Jan 02 2006" }}</span>
+      <a href="{{ .Permalink }}" class="post-link">
+        {{- with .File }}{{ .BaseFileName }}{{ else }}{{ .Slug }}{{ end }}.md
+      </a>
+      <span class="post-title-hint dim">// {{ .Title }}</span>
+    </li>
+    {{ end }}
+  </ul>
+  {{ else }}
+  <p class="dim">// directory is empty.</p>
+  {{ end }}
+
+  {{/* Pagination */}}
+  {{ $paginator := .Paginator }}
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="Page navigation">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}">&laquo; prev</a>
+    {{ end }}
+    <span class="dim">page {{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}">next &raquo;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+
+</section>
+{{ end }}

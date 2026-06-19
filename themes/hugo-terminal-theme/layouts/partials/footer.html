@@ -1,0 +1,17 @@
+<footer id="site-footer">
+  <div class="footer-line">
+    <span class="dim">--</span>
+    <span class="dim">{{ .Site.Title }}</span>
+    <span class="dim">/</span>
+    <span class="dim">{{ now.Format "2006" }}</span>
+    {{ with .Site.Params.author.name }}<span class="dim">/ {{ . }}</span>{{ end }}
+    <span class="dim">--</span>
+  </div>
+  {{ with .Site.Params.socialLinks }}
+  <div class="social-links">
+    {{ range . }}
+    <a href="{{ .url }}" rel="noopener noreferrer" target="_blank">{{ .name }}</a>
+    {{ end }}
+  </div>
+  {{ end }}
+</footer>

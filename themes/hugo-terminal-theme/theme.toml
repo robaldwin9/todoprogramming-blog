@@ -1,0 +1,14 @@
+name = "Hugo Terminal Theme"
+license = "MIT"
+description = "A terminal/hacker-style blog theme. Dark background, monospace fonts, CRT scanline overlay, and green prompt aesthetics."
+tags = ["terminal", "blog", "dark", "monospace", "hacker", "minimal"]
+features = ["blog", "rss", "tags", "pagination"]
+
+[author]
+  name = "Ronald Baldwin"
+  homepage = "https://todoprogramming.org"
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.120.0"

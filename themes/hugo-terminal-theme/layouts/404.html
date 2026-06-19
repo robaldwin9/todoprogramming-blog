@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="error-page">
+  <div class="cmd-line">
+    <span class="prompt-text">$ find / -name "{{ .Title }}"</span>
+  </div>
+  <pre class="error-output">
+bash: find: {{ .Permalink }}: No such file or directory
+exit status 1</pre>
+  <p class="error-code">ERROR <span class="error-red">404</span> — page not found.</p>
+  <a href="{{ .Site.BaseURL }}" class="back-link">$ cd ~</a>
+</section>
+{{ end }}
+
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+  {{ partial "head.html" . }}
+  <body>
+    <div id="terminal">
+      {{ partial "header.html" . }}
+      <main id="output">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{- $js := resources.Get "js/main.js" -}}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  </body>
+</html>

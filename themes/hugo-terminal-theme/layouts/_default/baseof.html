@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Locale | default "en" }}">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" . }}
+    <div id="terminal">
+      <main id="output">
+        {{ block "main" . }}{{ end }}
+      </main>
+      {{ partial "footer.html" . }}
+    </div>
+    {{- $js := resources.Get "js/main.js" -}}
+    <script src="{{ $js.RelPermalink }}" defer></script>
+  </body>
+</html>
