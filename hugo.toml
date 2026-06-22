@@ -45,15 +45,7 @@ enableEmoji            = true
   description     = "Programming, software development, and technology — by Ronald Baldwin."
   homePosts       = 10
   rssFeedDescription = "summary"
-  welcomeMessage  = "The todoprogramming.org blog — long-form write-ups and notes on programming, software development, and technology. Latest posts are listed below; the main terminal and wiki are linked above."
-
-[[params.socialLinks]]
-  name = "github"
-  url  = "https://github.com/robaldwin9"
-
-[[params.socialLinks]]
-  name = "wiki"
-  url  = "https://wiki.todoprogramming.org"
+  welcomeMessage  = "Welcome to Todo programming blog! The blog page allows for more opinionated content, then what would be found on the main page, or the wiki."
 
 [menu]
   [[menu.main]]
