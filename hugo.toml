@@ -1,5 +1,5 @@
 title       = "Todo Programming Blog"
-baseURL     = "https://blog.todo-programming.org"
+baseURL     = "https://blog.todoprogramming.org"
 contentDir  = "content/en"
 locale      = "en-us"
 theme       = "hugo-terminal-theme"
